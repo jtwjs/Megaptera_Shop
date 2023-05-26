@@ -32,9 +32,12 @@
 
     /* Completeness */
     "skipLibCheck": true /* Skip type checking all .d.ts files. */,
-    "baseUrl": ".",
+    "baseUrl": "." /* Specify the base directory to resolve non-relative module names. */,
     "paths": {
+      /* Specify a set of entries that re-map imports to additional lookup locations. */
       "@/*": ["./src/*"]
     }
-  }
+  },
+  "exclude": ["**/node_modules", "./cypress.config.js"],
+  "include": ["src", "@types"]
 }
