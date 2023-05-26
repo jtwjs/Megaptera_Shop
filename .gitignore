@@ -1,0 +1,11 @@
+/node_modules/
+/dist/
+/.parcel-cache/
+# swc
+.swc/
+# IDEA
+.idea/
+# MacOS
+.DS_store
+# Ignore TypeScript build info
+tsconfig.tsbuildinfo
