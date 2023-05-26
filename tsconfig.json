@@ -31,6 +31,10 @@
     "useUnknownInCatchVariables": true /* Default catch clause variables as 'unknown' instead of 'any'. */,
 
     /* Completeness */
-    "skipLibCheck": true /* Skip type checking all .d.ts files. */
+    "skipLibCheck": true /* Skip type checking all .d.ts files. */,
+    "baseUrl": ".",
+    "paths": {
+      "@/*": ["./src/*"]
+    }
   }
 }
