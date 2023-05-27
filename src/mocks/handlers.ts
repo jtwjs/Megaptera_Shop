@@ -1,20 +1,9 @@
 import { rest } from "msw";
 
-const BASE_URL = process.env.REACT_APP_API_URL;
+import { categories } from "@/fixtures/categories";
 
 const handlers = [
-  rest.get(`${BASE_URL}/sample`, (req, res, ctx) => {
-    const products = [
-      {
-        category: "Fruits",
-        price: "$1",
-        stocked: true,
-        name: "Apple",
-      },
-    ];
-
-    return res(ctx.status(200), ctx.json({ products }));
-  }),
+  rest.get("/categories", (req, res, ctx) => res(ctx.json({ categories }))),
 ];
 
 export default handlers;
