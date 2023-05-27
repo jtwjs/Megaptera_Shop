@@ -21,4 +21,7 @@ module.exports = {
     ],
   },
   testPathIgnorePatterns: ["<rootDir>/node_modules/", "<rootDir>/dist/"],
+  moduleNameMapper: {
+    "^@/(.*)$": "<rootDir>/src/$1",
+  },
 };
