@@ -14,6 +14,7 @@ export default function Header() {
         <h1>Shop</h1>
         <S.Nav>
           <div>
+            <NavLink to={PATH.ROOT}>Home</NavLink>
             <NavLink to={PATH.PRODUCTS}>Products</NavLink>
             <NavLink to={PATH.CART}>Cart</NavLink>
           </div>
