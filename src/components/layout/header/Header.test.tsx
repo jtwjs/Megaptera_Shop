@@ -28,7 +28,11 @@ describe("Header", () => {
 
     await Promise.all(
       categories.map(async (ctg) => {
-        await waitFor(() => screen.getByRole("link", { name: ctg.name }));
+        await waitFor(() =>
+          expect(
+            screen.getByRole("link", { name: ctg.name })
+          ).toBeInTheDocument()
+        );
       })
     );
   });
