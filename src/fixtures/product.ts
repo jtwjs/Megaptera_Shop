@@ -1,4 +1,4 @@
-import { Product } from "@/types/product";
+import { Product, ProductDetail } from "@/types/product";
 
 export const products: Product[] = [
   {
@@ -22,3 +22,31 @@ export const products: Product[] = [
     price: 135_000,
   },
 ];
+
+export const productDetails: ProductDetail[] = products.map((product) => ({
+  id: product.id,
+  category: product.category,
+  images: [product.thumbnail],
+  name: product.name,
+  price: product.price,
+  options: [
+    {
+      id: "option-01",
+      name: "Color",
+      items: [
+        { id: "option-item-01", name: "Black" },
+        { id: "option-item-02", name: "White" },
+      ],
+    },
+    {
+      id: "option-02",
+      name: "Size",
+      items: [
+        { id: "option-item-03", name: "S" },
+        { id: "option-item-04", name: "M" },
+        { id: "option-item-05", name: "L" },
+      ],
+    },
+  ],
+  description: "1st line\n2nd line\n3rd line",
+}));
