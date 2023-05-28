@@ -3,6 +3,6 @@ export type Category = {
   name: string;
 };
 
-export interface CategoryApiResponse {
+export interface CategoriesApiResponse {
   categories: Category[];
 }
