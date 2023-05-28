@@ -20,6 +20,16 @@ const handlers = [
     }
     return res(ctx.json({ products: fixtures.products }));
   }),
+  rest.get("/products/:id", (req, res, ctx) => {
+    const product = fixtures.productDetails.find(
+      (product) => product.id === req.params.id
+    );
+
+    if (!product) {
+      return res(ctx.status(404));
+    }
+    return res(ctx.json(product));
+  }),
 ];
 
 export default handlers;
