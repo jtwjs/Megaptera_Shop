@@ -1,4 +1,6 @@
 import { useQuery, UseQueryResult } from "@tanstack/react-query";
+import { AxiosError } from "axios";
+import { useNavigate } from "react-router-dom";
 
 import * as api from "@/apis/product";
 import * as type from "@/types/product";
@@ -20,6 +22,26 @@ export const useProducts = (
     () => api.fetchProducts({ categoryId }),
     {
       select: (res) => res.products,
+    }
+  );
+};
+
+export const useProductDetail = (
+  productId: string
+): UseQueryResult<type.ProductDetail> => {
+  const navigate = useNavigate();
+
+  return useQuery(
+    productKeys.detail(productId),
+    () => api.fetchProductDetail({ productId }),
+    {
+      onError: (error: AxiosError) => {
+        const status = error.response?.status;
+        if (status === 500) {
+          alert("오류가 발생했습니다. 잠시 후 다시 시도해주세요.");
+          navigate(-1);
+        }
+      },
     }
   );
 };

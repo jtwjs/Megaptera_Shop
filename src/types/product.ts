@@ -40,3 +40,7 @@ export interface ProductDetail {
   options: ProductOption[];
   description: string;
 }
+
+export interface ProductDetailApiRequest {
+  productId: string;
+}
