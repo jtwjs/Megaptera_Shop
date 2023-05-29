@@ -30,6 +30,8 @@ const handlers = [
     }
     return res(ctx.json(product));
   }),
+  rest.get("/cart", (req, res, ctx) => res(ctx.json(fixtures.cart))),
+  rest.post("/cart/line-items", (req, res, ctx) => res(ctx.status(201))),
 ];
 
 export default handlers;
