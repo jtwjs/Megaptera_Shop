@@ -1,6 +1,6 @@
 import { Link, useSearchParams } from "react-router-dom";
 
-import { useProducts } from "@/services/useProduct";
+import { useFetchProducts } from "@/services/useProduct";
 
 import Product from "./item/Product";
 import * as S from "./ProductList.styled";
@@ -8,7 +8,7 @@ import * as S from "./ProductList.styled";
 export default function Products() {
   const [searchParams] = useSearchParams();
   const categoryId = searchParams.get("categoryId");
-  const { data: products = [] } = useProducts(categoryId ?? "");
+  const { data: products = [] } = useFetchProducts(categoryId ?? "");
 
   return (
     <S.ProductList>
