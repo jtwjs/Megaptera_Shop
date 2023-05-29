@@ -1,6 +1,7 @@
 // eslint-disable-next-line import/no-extraneous-dependencies
 import "@testing-library/jest-dom";
 import "whatwg-fetch";
+import "reflect-metadata";
 
 import server from "./mocks/server";
 
