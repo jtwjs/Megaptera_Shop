@@ -2,7 +2,7 @@ import { useEffect } from "react";
 import { useParams } from "react-router-dom";
 
 import useProductFormStore from "@/hooks/useProductFormStore";
-import { useProductDetail } from "@/services/useProduct";
+import { useFetchProductDetail } from "@/services/useProduct";
 
 import AddToCartForm from "./addToCartForm/AddToCartForm";
 import ProductImages from "./images/ProductImages";
@@ -18,7 +18,7 @@ export default function ProductDetail() {
     data: product,
     isSuccess,
     isError,
-  } = useProductDetail(String(params.id));
+  } = useFetchProductDetail(String(params.id));
 
   useEffect(() => {
     return () => {

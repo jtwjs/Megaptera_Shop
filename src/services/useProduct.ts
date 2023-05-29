@@ -14,7 +14,7 @@ export const productKeys = {
   detail: (id: string) => [...productKeys.details(), id] as const,
 };
 
-export const useProducts = (
+export const useFetchProducts = (
   categoryId?: string
 ): UseQueryResult<type.Product[]> => {
   return useQuery(
@@ -26,7 +26,7 @@ export const useProducts = (
   );
 };
 
-export const useProductDetail = (
+export const useFetchProductDetail = (
   productId: string
 ): UseQueryResult<type.ProductDetail> => {
   const navigate = useNavigate();
