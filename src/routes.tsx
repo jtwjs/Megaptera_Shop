@@ -9,6 +9,7 @@ const routes = [
       { path: PATH.ROOT, element: <Page.Home /> },
       { path: PATH.PRODUCTS, element: <Page.Products /> },
       { path: `${PATH.PRODUCTS}/:id`, element: <Page.ProductDetail /> },
+      { path: PATH.CART, element: <Page.Cart /> },
     ],
   },
 ];
