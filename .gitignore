@@ -9,5 +9,7 @@
 .DS_store
 # Ignore TypeScript build info
 tsconfig.tsbuildinfo
+# Test Coverage
+/coverage
 
 .env*
