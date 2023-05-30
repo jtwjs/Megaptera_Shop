@@ -1,4 +1,5 @@
 import {
+  useQueryClient,
   useMutation,
   UseMutationOptions,
   useQuery,
@@ -9,12 +10,21 @@ import type { AxiosError } from "axios";
 import * as api from "@/apis/cart";
 import type * as type from "@/types/cart";
 
+const cartKey = ["cart"];
+
 export const useAddToCart = (
   options?: UseMutationOptions<unknown, AxiosError, type.AddCartApiRequest>
 ) => {
-  return useMutation((req) => api.addProductToCart(req), { ...options });
+  const queryClient = useQueryClient();
+
+  return useMutation((req) => api.addProductToCart(req), {
+    ...options,
+    onSuccess: () => {
+      queryClient.invalidateQueries(cartKey);
+    },
+  });
 };
 
 export const useFetchCartList = (): UseQueryResult<type.Cart> => {
-  return useQuery(["cart"], api.fetchCartList);
+  return useQuery(cartKey, api.fetchCartList);
 };
