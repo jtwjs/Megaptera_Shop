@@ -32,7 +32,7 @@ export default function AddToCartForm({ product }: AddToCartFormProps) {
   const handleAddToCart = (e: React.FormEvent) => {
     e.preventDefault();
 
-    if (!selectedOptionItems.length) {
+    if (selectedOptionItems.length !== product.options.length) {
       alert("옵션을 선택해주세요");
       return;
     }
