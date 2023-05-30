@@ -14,7 +14,7 @@ export default function Products() {
     <S.ProductList>
       {products.map((product) => (
         <li key={product.id}>
-          <Link to={product.id}>
+          <Link to={product.id} aria-label={`${product.name} 상품 페이지 이동`}>
             <Product product={product} />
           </Link>
         </li>
