@@ -1,3 +1,7 @@
 export default function HomePage() {
-  return <section>Home</section>;
+  return (
+    <section>
+      <h1>홈</h1>
+    </section>
+  );
 }

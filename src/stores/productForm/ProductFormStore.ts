@@ -6,7 +6,7 @@ import { ProductOption } from "@/types/product";
 import ObjectStore from "../ObjectStore";
 
 @singleton()
-export default class AddToCartStore extends ObjectStore {
+export default class ProductFormStore extends ObjectStore {
   selectedOptionItems: CartItemOption[] = [];
 
   quantity = 1;
