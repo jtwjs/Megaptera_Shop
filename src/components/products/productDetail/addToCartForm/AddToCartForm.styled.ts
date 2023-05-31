@@ -22,3 +22,10 @@ export const Price = styled.p`
   font-weight: 600;
   text-align: right;
 `;
+
+export const GuideMsg = styled.p`
+  ${({ theme }) => css`
+    font-size: 1.4rem;
+    color: ${theme.colors.primary};
+  `}
+`;

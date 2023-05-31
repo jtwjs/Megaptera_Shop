@@ -1,5 +1,6 @@
 import { Selector, Button } from "@/components/common";
 import useProductFormStore from "@/hooks/useProductFormStore";
+import { useAuth } from "@/libs/AuthProvider";
 import { useAddToCart } from "@/services/useCart";
 import { ProductDetail } from "@/types/product";
 import { numberFormat } from "@/utils/format";
@@ -20,6 +21,8 @@ export default function AddToCartForm({ product }: AddToCartFormProps) {
     changeOptionItem,
     clear,
   } = useProductFormStore();
+
+  const { isLoggedIn } = useAuth();
 
   const { mutate: addToCartMutate, isSuccess } = useAddToCart({
     onSuccess: () => clear(),
@@ -63,8 +66,10 @@ export default function AddToCartForm({ product }: AddToCartFormProps) {
       <S.Price>{numberFormat(totalPrice(product.price))}원</S.Price>
       {isSuccess ? (
         <S.DoneMessage>장바구니에 담았습니다</S.DoneMessage>
-      ) : (
+      ) : isLoggedIn ? (
         <Button type="submit" label="장바구니 담기" />
+      ) : (
+        <S.GuideMsg>주문하려면 로그인하세요</S.GuideMsg>
       )}
     </S.AddToCartForm>
   );
