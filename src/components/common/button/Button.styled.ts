@@ -12,5 +12,11 @@ export const Button = styled.button`
     font-size: 2rem;
     color: ${theme.colors.primary};
     cursor: pointer;
+
+    &:disabled {
+      color: white;
+      border-color: ${theme.colors.secondary};
+      background-color: ${theme.colors.secondary};
+    }
   `}
 `;
