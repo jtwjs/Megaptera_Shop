@@ -2,9 +2,16 @@ import { render, screen, waitFor } from "@testing-library/react";
 import { Route } from "react-router-dom";
 
 import { categories } from "@/fixtures";
+import { useAuth, type AuthContextValue } from "@/libs/AuthProvider";
 import { withAllContexts, withRouter } from "@/tests/utils";
 
 import Header from "./Header";
+
+jest.mock("@/libs/AuthProvider");
+
+let isLoggedIn = false;
+
+const context = describe;
 
 describe("Header", () => {
   function renderHeader() {
@@ -13,6 +20,15 @@ describe("Header", () => {
     );
   }
 
+  beforeEach(() => {
+    jest.mocked(useAuth).mockImplementation(
+      () =>
+        ({
+          isLoggedIn,
+        } as unknown as AuthContextValue)
+    );
+  });
+
   it("render correctly", () => {
     renderHeader();
 
@@ -20,7 +36,6 @@ describe("Header", () => {
       screen.getByRole("heading", { level: 1, name: "Shop" })
     ).toBeInTheDocument();
     expect(screen.getByRole("link", { name: "Products" })).toBeInTheDocument();
-    expect(screen.getByRole("link", { name: "Cart" })).toBeInTheDocument();
   });
 
   it("render categories", async () => {
@@ -35,5 +50,31 @@ describe("Header", () => {
         );
       })
     );
+  });
+
+  context("when the current user isn't logged in", () => {
+    it("renders “Login” link", () => {
+      renderHeader();
+
+      screen.getByRole("link", { name: "Login" });
+    });
+  });
+
+  context("when the current user is logged in", () => {
+    beforeEach(() => {
+      isLoggedIn = true;
+    });
+
+    it("renders 'Cart' link", () => {
+      renderHeader();
+
+      screen.getByRole("link", { name: "Cart" });
+    });
+
+    it("renders 'Logout' Button", () => {
+      renderHeader();
+
+      screen.getByRole("button", { name: "Logout" });
+    });
   });
 });

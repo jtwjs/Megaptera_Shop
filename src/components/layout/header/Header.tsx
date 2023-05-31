@@ -1,12 +1,21 @@
 import { NavLink, Link } from "react-router-dom";
 
+import { Button } from "@/components/common";
 import PATH from "@/constants/path";
+import { useAuth } from "@/libs/AuthProvider";
+import { useLogout } from "@/services/useAuth";
 import { useCategories } from "@/services/useCategories";
 
 import * as S from "./Header.styled";
 
 export default function Header() {
+  const { isLoggedIn } = useAuth();
   const { data: categories = [] } = useCategories();
+  const { mutate: logoutMutate } = useLogout();
+
+  const handleLogout = () => {
+    logoutMutate();
+  };
 
   return (
     <S.Header>
@@ -16,7 +25,14 @@ export default function Header() {
           <div>
             <NavLink to={PATH.ROOT}>Home</NavLink>
             <NavLink to={PATH.PRODUCTS}>Products</NavLink>
-            <NavLink to={PATH.CART}>Cart</NavLink>
+            {isLoggedIn ? (
+              <>
+                <NavLink to={PATH.CART}>Cart</NavLink>
+                <Button label="Logout" onClick={handleLogout} />
+              </>
+            ) : (
+              <NavLink to={PATH.LOGIN}>Login</NavLink>
+            )}
           </div>
           <ul>
             {categories.map((category) => (
