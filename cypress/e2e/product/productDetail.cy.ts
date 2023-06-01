@@ -1,5 +1,4 @@
 /// <reference types="cypress" />
-import "@testing-library/cypress/add-commands";
 
 // 상품 이름, 이미지, 옵션, 설명이 노출된다.
 // 장바구니에 상품을 담을 수 있는 버튼을 제공한다.
@@ -13,6 +12,7 @@ import "@testing-library/cypress/add-commands";
 
 describe("Product Detail", () => {
   beforeEach(() => {
+    cy.sessionLogin("tester@example.com", "password");
     cy.visit("/products");
     cy.findByRole("link", { name: /CBCL 하트자수맨투맨/ }).click();
   });

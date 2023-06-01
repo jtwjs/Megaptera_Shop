@@ -1,5 +1,4 @@
 /// <reference types="cypress" />
-import "@testing-library/cypress/add-commands";
 
 // 카테고리를 선택하지 않으면 전체 상품이 노출된다.
 // 카테고리 별로 상품 목록이 보여져야 한다.
@@ -42,7 +41,7 @@ describe("Product List", () => {
 
       cy.findByRole("link", { name: /CBCL 하트자수맨투맨/ }).click();
 
-      cy.findByText("상품 상세 페이지").should("exist");
+      cy.findByText("상품 상세").should("exist");
     });
   });
 });
