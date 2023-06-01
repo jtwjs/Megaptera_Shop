@@ -1,4 +1,40 @@
 /// <reference types="cypress" />
+/// <reference types="@testing-library/cypress" />
+
+import "@testing-library/cypress/add-commands";
+
+Cypress.Commands.add("backdoor", () => {
+  const BACKDOOR_BASE_URL = "https://shop-demo-api-02.fly.dev/backdoor";
+
+  cy.request(`${BACKDOOR_BASE_URL}/setup-database`);
+});
+
+Cypress.Commands.add("login", () => {
+  cy.visit("/login");
+  cy.findByRole("textbox", { name: "E-mail" }).type("tester@example.com");
+  cy.findByLabelText("Password").type("password");
+  cy.findByRole("button", { name: "로그인" }).click();
+  cy.findByRole("button", { name: "Logout" }).should("exist");
+});
+
+Cypress.Commands.add("sessionLogin", (id, pw) => {
+  cy.session(
+    [id, pw],
+    () => {
+      cy.visit("/login");
+      cy.findByRole("textbox", { name: "E-mail" }).type(id);
+      cy.findByLabelText("Password").type(pw);
+      cy.findByRole("button", { name: "로그인" }).click();
+      cy.findByRole("button", { name: "Logout" }).should("exist");
+    },
+    {
+      validate: () => {
+        cy.getCookie("megap-user").should("exist");
+      },
+    }
+  );
+});
+
 // ***********************************************
 // This example commands.ts shows you how to
 // create various custom commands and overwrite
