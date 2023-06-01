@@ -16,3 +16,13 @@ export interface User {
   user?: UserInfo;
   accessToken?: string;
 }
+
+export interface SignupApiRequest {
+  email: string;
+  name: string;
+  password: string;
+}
+
+export interface SignupApiResponse {
+  accessToken: string;
+}

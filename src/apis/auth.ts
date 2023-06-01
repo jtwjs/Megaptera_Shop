@@ -16,6 +16,15 @@ export const logout: ApiHandler<unknown, void> = async () => {
   await instance.delete("/session");
 };
 
+export const signup: ApiHandler<
+  type.SignupApiRequest,
+  type.SignupApiResponse
+> = async (req) => {
+  const res = await instance.post("/users", req);
+
+  return res.data;
+};
+
 export const fetchUserInfo: ApiHandler<unknown, type.User> = async () => {
   const res = await instance.get("/user/me");
   return res.data;
