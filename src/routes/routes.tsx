@@ -17,13 +17,17 @@ const routes = [
       { path: PATH.ROOT, element: <Page.Home /> },
       { path: PATH.PRODUCTS, element: <Page.Products /> },
       { path: `${PATH.PRODUCTS}/:id`, element: <Page.ProductDetail /> },
+      { path: PATH.SIGNUP_COMPLETE, element: <Page.SignupComplete /> },
       {
         element: <PrivateRoute />,
         children: [{ path: PATH.CART, element: <Page.Cart /> }],
       },
       {
         element: <PublicRoute />,
-        children: [{ path: PATH.LOGIN, element: <Page.Login /> }],
+        children: [
+          { path: PATH.LOGIN, element: <Page.Login /> },
+          { path: PATH.SIGNUP, element: <Page.Signup /> },
+        ],
       },
     ],
   },
