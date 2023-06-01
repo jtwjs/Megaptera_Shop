@@ -1,6 +1,8 @@
-import { useRef } from "react";
+import { useRef, useEffect } from "react";
+import { Link } from "react-router-dom";
 
 import { TextInput, Button } from "@/components/common";
+import PATH from "@/constants/path";
 import VALID_MSG from "@/constants/validMsg";
 import useLoginFormStore from "@/hooks/useLoginFormStore";
 import { useLogin } from "@/services/useAuth";
@@ -17,6 +19,7 @@ export default function LoginForm() {
     password,
     error,
     setError,
+    reset,
     handleChangeEmail,
     handleChangePassword,
   } = useLoginFormStore();
@@ -31,6 +34,12 @@ export default function LoginForm() {
 
     loginMutate(reqData, { onError: () => setError(VALID_MSG.LOGIN) });
   };
+
+  useEffect(() => {
+    return () => {
+      reset();
+    };
+  }, [reset]);
 
   const loginDisabled = Boolean(error) || !email || !password;
 
@@ -57,6 +66,7 @@ export default function LoginForm() {
       </S.LeftContainer>
       <S.RightContainer>
         <Button type="submit" label="로그인" disabled={loginDisabled} />
+        <Link to={PATH.SIGNUP}>회원가입</Link>
         {error && <S.ErrorMsg id={errorId.current}>{error}</S.ErrorMsg>}
       </S.RightContainer>
     </S.LoginForm>

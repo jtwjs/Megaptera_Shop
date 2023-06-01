@@ -37,6 +37,8 @@ export default class LoginFormStore extends ObjectStore {
   reset = () => {
     this.email = "";
     this.password = "";
+    this.setError("");
+
     this.publish();
   };
 
