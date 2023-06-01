@@ -49,6 +49,26 @@ export const useLogout = (
   });
 };
 
+export const useSignup = (
+  options?: UseMutationOptions<
+    type.SignupApiResponse,
+    AxiosError,
+    type.SignupApiRequest
+  >
+) => {
+  const navigate = useNavigate();
+
+  const { auth } = useAuth();
+
+  return useMutation((req) => api.signup(req), {
+    ...options,
+    onSuccess: (res) => {
+      auth.login(res.accessToken);
+      navigate(PATH.SIGNUP_COMPLETE, { state: { signupFlag: true } });
+    },
+  });
+};
+
 export const useFetcUserInfo = (): UseQueryResult<type.UserInfo> => {
   const { auth } = useAuth();
 
