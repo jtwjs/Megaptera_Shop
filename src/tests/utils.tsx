@@ -18,6 +18,11 @@ const createTestQueryClient = () =>
     defaultOptions: {
       queries: { retry: false },
     },
+    logger: {
+      log: console.log,
+      warn: console.warn,
+      error: () => {},
+    },
   });
 
 export const withAllContexts = (children: React.ReactElement) => {
@@ -28,4 +33,8 @@ export const withAllContexts = (children: React.ReactElement) => {
       <ThemeProvider theme={theme}>{children}</ThemeProvider>
     </QueryClientProvider>
   );
+};
+
+export const regex = (str: string) => {
+  return new RegExp(str);
 };
