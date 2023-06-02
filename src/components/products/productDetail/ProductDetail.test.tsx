@@ -2,7 +2,7 @@ import { render, screen, waitFor } from "@testing-library/react";
 import { Route } from "react-router-dom";
 
 import { productDetails } from "@/fixtures";
-import { withAllContexts, withRouter } from "@/tests/utils";
+import { withAllContexts, withRouter, regex } from "@/tests/utils";
 import { numberFormat } from "@/utils/format";
 
 import ProductDetail from "./ProductDetail";
@@ -40,12 +40,24 @@ describe("ProductDetail", () => {
       const line = detail.description.split("\n");
 
       line.forEach((str) => {
-        expect(screen.getByText(new RegExp(str))).toBeInTheDocument();
+        expect(screen.getByText(regex(str))).toBeInTheDocument();
       });
 
       detail.images.forEach((img) => {
         expect(screen.getByRole("img")).toHaveAttribute("src", img.url);
       });
+    });
+  });
+
+  context("with an invalid product id", () => {
+    it("display text '해당 상품을 찾을 수 없습니다.'", async () => {
+      renderProductDetail("invalid");
+
+      await waitFor(() =>
+        expect(
+          screen.getByText(/해당 상품을 찾을 수 없습니다./)
+        ).toBeInTheDocument()
+      );
     });
   });
 });

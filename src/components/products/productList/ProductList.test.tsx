@@ -3,7 +3,7 @@ import userEvent from "@testing-library/user-event";
 import { Route, useParams } from "react-router-dom";
 
 import { products } from "@/fixtures";
-import { withAllContexts, withRouter } from "@/tests/utils";
+import { withAllContexts, withRouter, regex } from "@/tests/utils";
 
 import ProductList from "./ProductList";
 
@@ -55,7 +55,7 @@ describe("ProductList", () => {
       userEvent.click(linkBtn);
 
       await waitFor(() =>
-        expect(screen.getByText(new RegExp(product.id))).toBeInTheDocument()
+        expect(screen.getByText(regex(product.id))).toBeInTheDocument()
       );
     });
   });
