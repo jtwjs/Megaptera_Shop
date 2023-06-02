@@ -28,6 +28,7 @@ export default function Header() {
             {isLoggedIn ? (
               <>
                 <NavLink to={PATH.CART}>Cart</NavLink>
+                <NavLink to={PATH.ORDERS}>Order</NavLink>
                 <Button label="Logout" onClick={handleLogout} />
               </>
             ) : (

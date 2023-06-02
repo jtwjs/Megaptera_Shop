@@ -56,7 +56,7 @@ describe("Header", () => {
     it("renders “Login” link", () => {
       renderHeader();
 
-      screen.getByRole("link", { name: "Login" });
+      expect(screen.getByRole("link", { name: "Login" })).toBeInTheDocument();
     });
   });
 
@@ -68,13 +68,21 @@ describe("Header", () => {
     it("renders 'Cart' link", () => {
       renderHeader();
 
-      screen.getByRole("link", { name: "Cart" });
+      expect(screen.getByRole("link", { name: "Cart" })).toBeInTheDocument();
+    });
+
+    it("renders 'Order' link", () => {
+      renderHeader();
+
+      expect(screen.getByRole("link", { name: "Order" })).toBeInTheDocument();
     });
 
     it("renders 'Logout' Button", () => {
       renderHeader();
 
-      screen.getByRole("button", { name: "Logout" });
+      expect(
+        screen.getByRole("button", { name: "Logout" })
+      ).toBeInTheDocument();
     });
   });
 });
