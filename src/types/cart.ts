@@ -20,7 +20,7 @@ export type OrderOption = {
   item: OrderOptionItem;
 };
 
-export interface CartItem {
+export interface LineItem {
   id: string;
   product: Omit<Product, "category" | "price">;
   options: OrderOption[];
@@ -30,6 +30,6 @@ export interface CartItem {
 }
 
 export interface Cart {
-  lineItems: CartItem[];
+  lineItems: LineItem[];
   totalPrice: number;
 }
