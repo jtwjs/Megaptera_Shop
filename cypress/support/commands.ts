@@ -17,7 +17,7 @@ Cypress.Commands.add("login", () => {
   cy.findByRole("button", { name: "Logout" }).should("exist");
 });
 
-Cypress.Commands.add("sessionLogin", (id, pw) => {
+Cypress.Commands.add("sessionLogin", (id: string, pw: string) => {
   cy.session(
     [id, pw],
     () => {
