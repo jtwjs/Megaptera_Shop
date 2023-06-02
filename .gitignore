@@ -12,4 +12,6 @@ tsconfig.tsbuildinfo
 # Test Coverage
 /coverage
 
+cypress/videos
+
 .env*
