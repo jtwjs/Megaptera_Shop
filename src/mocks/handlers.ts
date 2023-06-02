@@ -32,6 +32,20 @@ const handlers = [
   }),
   rest.get("/cart", (req, res, ctx) => res(ctx.json(fixtures.cart))),
   rest.post("/cart/line-items", (req, res, ctx) => res(ctx.status(201))),
+  rest.get("/orders", (req, res, ctx) =>
+    res(ctx.json({ orders: fixtures.orders }))
+  ),
+  rest.get("/orders/:id", (req, res, ctx) => {
+    const order = fixtures.orderDetails.find(
+      (order) => order.id === req.params.id
+    );
+
+    if (!order) {
+      return res(ctx.status(400));
+    }
+
+    return res(ctx.json(order));
+  }),
 ];
 
 export default handlers;
