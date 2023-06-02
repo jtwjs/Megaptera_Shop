@@ -20,7 +20,11 @@ const routes = [
       { path: PATH.SIGNUP_COMPLETE, element: <Page.SignupComplete /> },
       {
         element: <PrivateRoute />,
-        children: [{ path: PATH.CART, element: <Page.Cart /> }],
+        children: [
+          { path: PATH.CART, element: <Page.Cart /> },
+          { path: PATH.ORDERS, element: <Page.Orders /> },
+          { path: `${PATH.ORDERS}/:id`, element: <Page.OrderDetail /> },
+        ],
       },
       {
         element: <PublicRoute />,

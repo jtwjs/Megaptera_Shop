@@ -5,6 +5,7 @@ const PATH = {
   LOGIN: "/login",
   SIGNUP: "/signup",
   SIGNUP_COMPLETE: "/signupComplete",
+  ORDERS: "/orders",
 };
 
 export const NON_SAVED_PATH = [PATH.LOGIN];
