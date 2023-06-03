@@ -26,3 +26,21 @@ export interface OrderDetailApiResponse {
   status: OrderStatus;
   orderedAt: string;
 }
+
+export interface Receiver {
+  name: string;
+  address1: string;
+  address2: string;
+  postalCode: string;
+  phoneNumber: string;
+}
+
+export interface Payment {
+  merchantId: string;
+  transactionId: string;
+}
+
+export interface CreateOrderApiRequest {
+  receiver: Receiver;
+  payment: Payment;
+}

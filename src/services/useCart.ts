@@ -10,7 +10,7 @@ import type { AxiosError } from "axios";
 import * as api from "@/apis/cart";
 import type * as type from "@/types/cart";
 
-const cartKey = ["cart"];
+export const cartKey = ["cart"];
 
 export const useAddToCart = (
   options?: UseMutationOptions<unknown, AxiosError, type.AddCartApiRequest>
