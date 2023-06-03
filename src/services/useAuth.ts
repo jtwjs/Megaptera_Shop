@@ -64,7 +64,7 @@ export const useSignup = (
     ...options,
     onSuccess: (res) => {
       auth.login(res.accessToken);
-      navigate(PATH.SIGNUP_COMPLETE, { state: { signupFlag: true } });
+      navigate(PATH.SIGNUP_COMPLETE, { state: { completeFlag: true } });
     },
   });
 };
