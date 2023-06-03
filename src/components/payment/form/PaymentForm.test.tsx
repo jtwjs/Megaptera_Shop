@@ -5,26 +5,11 @@ import { withAllContexts, withRouter } from "@/tests/utils";
 
 import PaymentForm from "./PaymentForm";
 
-jest.mock("@/hooks/usePaymentFormStore", () => () => ({
-  handleChangeAddress: jest.fn(),
-  handleChangeName: jest.fn(),
-  handleChangeAddressDetail: jest.fn(),
-  handleChangePhoneNumber: jest.fn(),
-}));
-
 describe("PaymentForm", () => {
-  function renderPaymentForm() {
-    return render(
+  it("render correctly", () => {
+    render(
       withAllContexts(withRouter(<Route path="/" element={<PaymentForm />} />))
     );
-  }
-
-  beforeEach(() => {
-    jest.clearAllMocks();
-  });
-
-  it("render correctly", () => {
-    renderPaymentForm();
 
     expect(
       screen.getByRole("heading", { level: 3, name: "받는 사람" })
