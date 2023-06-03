@@ -6,6 +6,15 @@ export const CartView = styled.div`
   row-gap: 20px;
 `;
 
+export const Bottom = styled.div`
+  display: flex;
+  justify-content: space-between;
+
+  & > a {
+    font-size: 2rem;
+  }
+`;
+
 export const TotalPrice = styled.dl`
   display: flex;
   column-gap: 4px;
