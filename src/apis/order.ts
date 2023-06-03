@@ -20,3 +20,10 @@ export const fetchOrderDetail: ApiHandler<
 
   return res.data;
 };
+
+export const createOrder: ApiHandler<
+  type.CreateOrderApiRequest,
+  unknown
+> = async (req) => {
+  await instance.post("/orders", req);
+};

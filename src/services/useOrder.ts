@@ -1,9 +1,18 @@
-import { useQuery, UseQueryResult } from "@tanstack/react-query";
+import {
+  useQuery,
+  UseQueryResult,
+  useMutation,
+  UseMutationOptions,
+  useQueryClient,
+} from "@tanstack/react-query";
 import { AxiosError } from "axios";
 import { useNavigate } from "react-router-dom";
 
 import * as api from "@/apis/order";
+import PATH from "@/constants/path";
 import * as type from "@/types/order";
+
+import { cartKey } from "./useCart";
 
 export const orderKeys = {
   all: ["order"] as const,
@@ -36,4 +45,20 @@ export const useFetchOrderDetail = (
       },
     }
   );
+};
+
+export const useCreateOrder = (
+  options?: UseMutationOptions<unknown, AxiosError, type.CreateOrderApiRequest>
+) => {
+  const navigate = useNavigate();
+  const queryClient = useQueryClient();
+
+  return useMutation((req) => api.createOrder(req), {
+    ...options,
+    onSuccess: () => {
+      queryClient.invalidateQueries(cartKey);
+      queryClient.invalidateQueries(orderKeys.all);
+      navigate(PATH.PAYMENT_COMPLETE, { state: { completeFlag: true } });
+    },
+  });
 };
