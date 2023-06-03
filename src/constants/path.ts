@@ -6,6 +6,8 @@ const PATH = {
   SIGNUP: "/signup",
   SIGNUP_COMPLETE: "/signupComplete",
   ORDERS: "/orders",
+  PAYMENT: "/payment",
+  PAYMENT_COMPLETE: "/paymentComplete",
 };
 
 export const NON_SAVED_PATH = [PATH.LOGIN];

@@ -5,7 +5,7 @@ import PATH from "@/constants/path";
 export default function SignupCompletePage() {
   const { state } = useLocation();
 
-  return state?.signupFlag ? (
+  return state?.completeFlag ? (
     <section>
       <h1>Signup Complete</h1>
     </section>

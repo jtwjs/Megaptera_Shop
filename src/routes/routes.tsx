@@ -24,6 +24,8 @@ const routes = [
           { path: PATH.CART, element: <Page.Cart /> },
           { path: PATH.ORDERS, element: <Page.Orders /> },
           { path: `${PATH.ORDERS}/:id`, element: <Page.OrderDetail /> },
+          { path: PATH.PAYMENT, element: <Page.Payment /> },
+          { path: PATH.PAYMENT_COMPLETE, element: <Page.PaymentComplete /> },
         ],
       },
       {
