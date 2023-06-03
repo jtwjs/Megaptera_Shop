@@ -3,6 +3,7 @@ import { useFetchCartList } from "@/services/useCart";
 import { numberFormat } from "@/utils/format";
 
 import PaymentForm from "../form/PaymentForm";
+import PaymentBtn from "../paymentBtn/PaymentBtn";
 
 import * as S from "./PaymentView.styled";
 
@@ -21,6 +22,7 @@ export default function PaymentView() {
         <dd>{numberFormat(data.totalPrice)}원</dd>
       </S.TotalPrice>
       <PaymentForm />
+      <PaymentBtn cart={data} />
     </S.PaymentView>
   );
 }
