@@ -3,13 +3,14 @@ import { useRef, HTMLAttributes } from "react";
 import * as S from "./TextInput.styled";
 
 interface InputProps extends HTMLAttributes<HTMLInputElement> {
-  type?: "text" | "password";
+  type?: "text" | "password" | "tel";
   id: string;
   label?: string;
-  placeholder: string;
+  placeholder?: string;
   error?: string;
+  readOnly?: boolean;
   value: string;
-  onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
+  onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void;
 }
 
 export default function Input({
@@ -18,6 +19,7 @@ export default function Input({
   label,
   placeholder,
   error,
+  readOnly = false,
   value,
   onChange,
   ...other
@@ -31,6 +33,7 @@ export default function Input({
         id={inputId.current}
         aria-invalid={error ? "true" : "false"}
         placeholder={placeholder}
+        readOnly={readOnly}
         value={value}
         onChange={onChange}
         {...other}
