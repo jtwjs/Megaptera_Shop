@@ -5,11 +5,7 @@ import * as S from "./PaymentForm.styled";
 
 export default function PaymentForm() {
   const {
-    name,
-    address,
-    postalCode,
-    addressDetail,
-    phoneNumber,
+    receiver,
     handleChangeAddress,
     handleChangeName,
     handleChangeAddressDetail,
@@ -23,7 +19,7 @@ export default function PaymentForm() {
         id="name"
         label="이름"
         placeholder="받는 분 이름"
-        value={name}
+        value={receiver.name}
         onChange={handleChangeName}
       />
       <S.PostalCodeField>
@@ -31,7 +27,7 @@ export default function PaymentForm() {
           id="postCode"
           label="우편번호"
           placeholder="우편번호"
-          value={postalCode}
+          value={receiver.postalCode}
           readOnly
         />
         <AddressSearch
@@ -46,19 +42,19 @@ export default function PaymentForm() {
           changeAddress={handleChangeAddress}
         />
       </S.PostalCodeField>
-      <TextInput id="address" label="주소" value={address} readOnly />
+      <TextInput id="address" label="주소" value={receiver.address1} readOnly />
       <TextInput
         id="detail"
         label="상세 주소"
         placeholder="상세 주소를 입력하세요"
-        value={addressDetail}
+        value={receiver.address2}
         onChange={handleChangeAddressDetail}
       />
       <TextInput
         id="tel"
         label="전화번호"
         type="tel"
-        value={phoneNumber}
+        value={receiver.phoneNumber}
         onChange={handleChangePhoneNumber}
       />
     </S.PaymentForm>

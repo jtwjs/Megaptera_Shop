@@ -6,11 +6,6 @@ import { withAllContexts, withRouter } from "@/tests/utils";
 import PaymentForm from "./PaymentForm";
 
 jest.mock("@/hooks/usePaymentFormStore", () => () => ({
-  name: "",
-  address: "",
-  postalCode: "",
-  addressDetail: "",
-  phoneNumber: "",
   handleChangeAddress: jest.fn(),
   handleChangeName: jest.fn(),
   handleChangeAddressDetail: jest.fn(),
