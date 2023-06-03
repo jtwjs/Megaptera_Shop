@@ -4,7 +4,7 @@
 import "@testing-library/cypress/add-commands";
 
 Cypress.Commands.add("backdoor", () => {
-  const BACKDOOR_BASE_URL = `${process.env.REACT_APP_API_URL}/backdoor`;
+  const BACKDOOR_BASE_URL = "https://shop-demo-api-03.fly.dev/backdoor";
 
   cy.request(`${BACKDOOR_BASE_URL}/setup-database`);
 });
