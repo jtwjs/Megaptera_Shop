@@ -1,7 +1,7 @@
 /// <reference types="cypress" />
 /// <reference types="@testing-library/cypress" />
-
 import "@testing-library/cypress/add-commands";
+import "cypress-iframe";
 
 Cypress.Commands.add("backdoor", () => {
   const BACKDOOR_BASE_URL = "https://shop-demo-api-03.fly.dev/backdoor";
