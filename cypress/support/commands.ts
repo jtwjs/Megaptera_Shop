@@ -4,9 +4,7 @@ import "@testing-library/cypress/add-commands";
 import "cypress-iframe";
 
 Cypress.Commands.add("backdoor", () => {
-  const BACKDOOR_BASE_URL = "https://shop-demo-api-03.fly.dev/backdoor";
-
-  cy.request(`${BACKDOOR_BASE_URL}/setup-database`);
+  cy.request(Cypress.env("backdoor_url"));
 });
 
 Cypress.Commands.add("login", () => {
