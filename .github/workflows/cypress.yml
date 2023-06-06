@@ -19,9 +19,13 @@ jobs:
         uses: actions/checkout@v3
       - name: Generate env variable
         run: |
-          echo "REACT_APP_API_URL=$REACT_APP_API_URL" >> .env.local
+          echo "REACT_APP_API_URL=$REACT_APP_API_URL" >>  .env
+          echo "PORTONE_IMP=$PORTONE_IMP" >>  .env
+          echo "PORTONE_PG_CODE=$PORTONE_PG_CODE" >>  .env
         env:
           REACT_APP_API_URL: ${{ secrets.REACT_APP_API_URL }}
+          PORTONE_IMP: ${{ secrets.PORTONE_IMP }}
+          PORTONE_PG_CODE: ${{ secrets.PORTONE_PG_CODE }}
       - name: Cypress run
         uses: cypress-io/github-action@v5
         with:
